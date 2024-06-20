@@ -1,51 +1,56 @@
 package com.talentverify.talent_verify.Admin;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
 @Entity
 public class Admin{
-        @Id
-        private Long id;
+
         String CompanyName;
         String RegistrationDate;
-        String Address;
+        String address;
         String phoneNumber;
-        String CompanyEmail;
-        String Departments;
-        int numberOfEmployees;
+        String companyemail;
+        String departments;
+        int numberofemployees;
         String password;
+        String confirmpassword;
 
-        public Admin(Long id, String companyName, String registrationDate,
-                     String address, String phoneNumber,
-                     String companyEmail, String departments, int numberOfEmployees,
-                     String password) {
-                this.id = id;
+    @Id
+    @GeneratedValue
+    private Long id;
+
+        public Admin(String companyName, String registrationDate, String address,
+                     String phoneNumber, String companyemail, String departments, int
+                numberofemployees, String password, String confirmpassword, Long id) {
                 CompanyName = companyName;
                 RegistrationDate = registrationDate;
-                Address = address;
+                this.address = address;
                 this.phoneNumber = phoneNumber;
-                CompanyEmail = companyEmail;
-                Departments = departments;
-                this.numberOfEmployees = numberOfEmployees;
+                this.companyemail = companyemail;
+                this.departments = departments;
+                this.numberofemployees = numberofemployees;
                 this.password = password;
+                this.confirmpassword = confirmpassword;
+                this.id = id;
+        }
+
+        public Admin(String confirmpassword, String password, int numberofemployees,
+                     String companyemail, String departments, String phoneNumber,
+                     String address, String registrationDate, String companyName) {
+                this.confirmpassword = confirmpassword;
+                this.password = password;
+                this.numberofemployees = numberofemployees;
+                this.companyemail = companyemail;
+                this.departments = departments;
+                this.phoneNumber = phoneNumber;
+                this.address = address;
+                RegistrationDate = registrationDate;
+                CompanyName = companyName;
         }
 
         public Admin() {
-
-        }
-
-        public Admin(String companyName, String registrationDate, String address,
-                     String phoneNumber, String companyEmail, String departments,
-                     int numberOfEmployees, String password) {
-                CompanyName = companyName;
-                RegistrationDate = registrationDate;
-                Address = address;
-                this.phoneNumber = phoneNumber;
-                CompanyEmail = companyEmail;
-                Departments = departments;
-                this.numberOfEmployees = numberOfEmployees;
-                this.password = password;
         }
 
         public String getCompanyName() {
@@ -65,11 +70,11 @@ public class Admin{
         }
 
         public String getAddress() {
-                return Address;
+                return this.address;
         }
 
         public void setAddress(String address) {
-                Address = address;
+                this.address = address;
         }
 
         public String getPhoneNumber() {
@@ -80,28 +85,28 @@ public class Admin{
                 this.phoneNumber = phoneNumber;
         }
 
-        public String getCompanyEmail() {
-                return CompanyEmail;
+        public String getCompanyemail() {
+                return companyemail;
         }
 
-        public void setCompanyEmail(String companyEmail) {
-                CompanyEmail = companyEmail;
+        public void setCompanyemail(String companyemail) {
+                this.companyemail = companyemail;
         }
 
         public String getDepartments() {
-                return Departments;
+                return departments;
         }
 
         public void setDepartments(String departments) {
-                Departments = departments;
+                this.departments = departments;
         }
 
-        public int getNumberOfEmployees() {
-                return numberOfEmployees;
+        public int getNumberofemployees() {
+                return numberofemployees;
         }
 
-        public void setNumberOfEmployees(int numberOfEmployees) {
-                this.numberOfEmployees = numberOfEmployees;
+        public void setNumberofemployees(int numberofemployees) {
+                this.numberofemployees = numberofemployees;
         }
 
         public String getPassword() {
@@ -112,29 +117,35 @@ public class Admin{
                 this.password = password;
         }
 
+        public String getConfirmpassword() {
+                return confirmpassword;
+        }
 
-
-
-        public void setId(Long id) {
-                this.id = id;
+        public void setConfirmpassword(String confirmpassword) {
+                this.confirmpassword = confirmpassword;
         }
 
         public Long getId() {
                 return id;
         }
 
+        public void setId(Long id) {
+                this.id = id;
+        }
+
         @Override
         public String toString() {
                 return "Admin{" +
-                        "id=" + id +
-                        ", CompanyName='" + CompanyName + '\'' +
+                        "CompanyName='" + CompanyName + '\'' +
                         ", RegistrationDate='" + RegistrationDate + '\'' +
-                        ", Address='" + Address + '\'' +
+                        ", address='" + address + '\'' +
                         ", phoneNumber='" + phoneNumber + '\'' +
-                        ", CompanyEmail='" + CompanyEmail + '\'' +
-                        ", Departments='" + Departments + '\'' +
-                        ", numberOfEmployees=" + numberOfEmployees +
+                        ", companyemail='" + companyemail + '\'' +
+                        ", departments='" + departments + '\'' +
+                        ", numberofemployees=" + numberofemployees +
                         ", password='" + password + '\'' +
+                        ", confirmpassword='" + confirmpassword + '\'' +
+                        ", id=" + id +
                         '}';
         }
 }
