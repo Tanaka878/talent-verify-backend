@@ -15,6 +15,11 @@ public class Employee {
     String name;
     String surname;
     String email;
+    LocalDate startDate;
+    LocalDate endDate;
+    String tel;
+    String department;
+    String roles;
 
     public Employee(Long id, String email, String name, String surname, String department, String roles,
                     LocalDate startDate, LocalDate endDate, String tel) {
@@ -29,8 +34,7 @@ public class Employee {
         this.tel = tel;
     }
 
-    String department;
-    String roles;
+
 
     @Override
     public String toString() {
@@ -47,9 +51,7 @@ public class Employee {
                 '}';
     }
 
-    LocalDate startDate;
-    LocalDate endDate;
-    String tel;
+
 
 
 
