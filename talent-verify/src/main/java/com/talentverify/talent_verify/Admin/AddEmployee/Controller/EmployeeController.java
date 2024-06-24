@@ -34,17 +34,9 @@ public class EmployeeController {
     }
 
     @PutMapping("/update/{email}")
-    public void UpdateDetails(@PathVariable("email") String email,
-                              @RequestParam(required = false) Long id,
-                              @RequestParam(required = false) String surname,
-                              @RequestParam(required = false) LocalDate startDate,
-                              @RequestParam(required = false) LocalDate endDate,
-                              @RequestParam(required = false) String tel,
-                              @RequestParam(required = false) String department,
-                              @RequestParam(required = false) String roles,
-                              @RequestParam(required = false) String  name
+    public void UpdateDetails(@PathVariable("email") String email, @RequestBody Employee employee
                               ){
-        employeeService.update(id, surname,startDate, endDate,tel, department,roles, name);
+        employeeService.update(email, employee);
     }
     
 

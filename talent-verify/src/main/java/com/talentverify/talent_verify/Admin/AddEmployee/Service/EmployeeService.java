@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.Optional;
 
 @Service
 public class EmployeeService {
@@ -30,17 +31,25 @@ public class EmployeeService {
 
 
     @Transactional
-    public void update(Long id, String surname, LocalDate startDate,
-                       LocalDate endDate, String tel, String department, String roles, String name) {
-        Employee employee = employeeRepository.findEmployeeById(id);
-        employee.setSurname(surname);
-        employee.setDepartment(department);
-        employee.setName(name);
-        employee.setStartDate(startDate);
-        employee.setEndDate(endDate);
-        employee.setTel(tel);
-        employee.setRoles(roles);
+    public void update(String email, Employee Updatedemployee) {
+        Optional<Employee> employeeOptional = Optional.ofNullable(employeeRepository.findEmployeeByEmail(email));
 
+
+        if (employeeOptional.isPresent()){
+            Employee emp = employeeRepository.findEmployeeByEmail(email);
+
+            // setting the fileds
+            emp.setName(Updatedemployee.getName());
+            emp.setEmail(Updatedemployee.getEmail());
+            emp.setRoles(Updatedemployee.getRoles());
+            emp.setTel(Updatedemployee.getTel());
+            emp.setEndDate(Updatedemployee.getEndDate());
+            emp.setStartDate(Updatedemployee.getStartDate());
+            emp.setDepartment(Updatedemployee.getDepartment());
+            emp.setSurname(Updatedemployee.getSurname());
+
+
+        }
 
     }
 }
