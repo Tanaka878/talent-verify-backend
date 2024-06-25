@@ -5,6 +5,8 @@ import com.talentverify.talent_verify.Admin.AdminRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class AdminService {
     private final AdminRepository adminRepository;
@@ -20,6 +22,13 @@ public class AdminService {
     }
 
     public void addAdminstrator(Admin admin) {
-        adminRepository.save(admin);
+        Optional<Admin> adminOptional = Optional.ofNullable(adminRepository.findByCompanyemail(admin.getCompanyemail()));
+        if (adminOptional.isPresent()){
+            System.out.println("Company Already exists");
+        }
+        else {
+            adminRepository.save(admin);
+        }
+
     }
 }

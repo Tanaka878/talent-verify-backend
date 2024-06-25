@@ -20,9 +20,10 @@ public class Employee {
     String tel;
     String department;
     String roles;
+    String companyemail;
 
     public Employee(Long id, String email, String name, String surname, String department, String roles,
-                    LocalDate startDate, LocalDate endDate, String tel) {
+                    LocalDate startDate, LocalDate endDate, String tel, String companyemail) {
         this.id = id;
         this.email = email;
         this.name = name;
@@ -32,8 +33,8 @@ public class Employee {
         this.startDate = startDate;
         this.endDate = endDate;
         this.tel = tel;
+        this.companyemail = companyemail;
     }
-
 
 
     @Override
@@ -43,21 +44,17 @@ public class Employee {
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
-                ", department='" + department + '\'' +
-                ", roles='" + roles + '\'' +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 ", tel='" + tel + '\'' +
+                ", department='" + department + '\'' +
+                ", roles='" + roles + '\'' +
+                ", companyemail='" + companyemail + '\'' +
                 '}';
     }
 
-
-
-
-
-
     public Employee(String name, String surname, String email, String department, String roles,
-                    LocalDate startDate, LocalDate endDate, String tel) {
+                    LocalDate startDate, LocalDate endDate, String tel, String companyemail) {
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -66,9 +63,18 @@ public class Employee {
         this.startDate = startDate;
         this.endDate = endDate;
         this.tel = tel;
+        this.companyemail = companyemail;
     }
 
     public Employee() {
+    }
+
+    public String getCompanyemail() {
+        return companyemail;
+    }
+
+    public void setCompanyemail(String companyemail) {
+        this.companyemail = companyemail;
     }
 
     public String getTel() {
